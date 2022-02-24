@@ -19,7 +19,7 @@ export default function Auth({ isSigningUp = false }) {
     } else {
       const response = await signInUser(email, password);
       setUser({ id: response.id, email: response.email });
-      history.replace(`/profile/${response.id}`);
+      history.replace('/profile');
     }
   };
   return (

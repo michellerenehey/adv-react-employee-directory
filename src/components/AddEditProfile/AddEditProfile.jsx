@@ -1,3 +1,26 @@
+import './AddEditProfile.css';
+import { useUser } from '../../context/UserContext';
+import { createProfile } from '../../services/profiles';
+
+export default function AddEditProfile() {
+  const [name, setName] = useState('');
+  const [birthday, setBirthday] = useState('');
+  const [bio, setBio] = useState('');
+  const { user } = useUser();
+
+  const handleProfile = async (e) => {
+    e.preventDefault();
+
+    await createProfile;
+  };
+
+  return (
+    <div>
+      <form></form>
+    </div>
+  );
+}
+
 // connect to css
 
 // if no profile exists
@@ -18,9 +41,3 @@
 // isCreatingProfile?
 
 // need profile context?
-
-import './AddEditProfile.css';
-
-export default function AddEditProfile() {
-  return <div>AddEditProfile</div>;
-}
