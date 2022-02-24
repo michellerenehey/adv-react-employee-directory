@@ -22,7 +22,7 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    port: 7891,
+    port: 3000,
     historyApiFallback: true,
   },
   plugins: [
