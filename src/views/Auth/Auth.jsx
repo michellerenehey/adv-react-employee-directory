@@ -10,6 +10,7 @@ export default function Auth({ isSigningUp = false }) {
           : 'Welcome back! Sign in.'}
       </h2>
       <form>
+        <h4>{isSigningUp ? 'Sign Up' : 'Sign In'}</h4>
         <label>Email: </label>
         <input type="email" />
         <label>Password: </label>
