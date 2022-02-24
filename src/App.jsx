@@ -32,7 +32,7 @@ export default function App() {
             <Route exact path="/profile/edit">
               <AddEditProfile isEditing />
             </Route>
-            <Route exact path="/profile/add">
+            <Route exact path="/profile/create">
               <AddEditProfile />
             </Route>
           </Switch>

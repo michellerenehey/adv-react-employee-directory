@@ -1,18 +1,38 @@
 import './AddEditProfile.css';
 import { useUser } from '../../context/UserContext';
-import { createProfile } from '../../services/profiles';
-import { useState } from 'react';
+import { createProfile, updateProfile } from '../../services/profiles';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useProfile } from '../../context/ProfileContext';
 
-export default function AddEditProfile() {
+export default function AddEditProfile({
+  isEditing = false,
+  isCreating = false,
+}) {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [bio, setBio] = useState('');
   const { user } = useUser();
+  const { profile, setProfile } = useProfile();
+  const history = useHistory();
+
+  useEffect(() => {
+    setName(profile.name);
+    setBirthday(profile.birthday);
+    setBio(profile.bio);
+  }, [profile]);
 
   const handleProfile = async (e) => {
     e.preventDefault();
-    await createProfile({ name, email: user.email, bio, birthday });
-    console.log('clicking');
+
+    if (isCreating) {
+      await createProfile({ name, email: user.email, bio, birthday });
+      history.push('/profile');
+    } else {
+      await updateProfile({ name, email: user.email, bio, birthday });
+      setProfile({ name, email: user.email, bio, birthday });
+      history.replace('/profile');
+    }
   };
 
   return (
@@ -22,12 +42,14 @@ export default function AddEditProfile() {
         <input
           type="text"
           name="name"
+          value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <label>Enter Birthday:</label>
         <input
           type="date"
           name="birthday"
+          value={birthday}
           onChange={(e) => setBirthday(e.target.value)}
         />
         <label>Your Email</label>
@@ -36,6 +58,7 @@ export default function AddEditProfile() {
         <input
           type="textarea"
           name="bio"
+          value={bio}
           onChange={(e) => setBio(e.target.value)}
         />
         <button>Submit</button>
