@@ -4,6 +4,7 @@ import Layout from './views/Layout/Layout';
 import Home from './views/Home/Home';
 import Profile from './views/Profile/Profile';
 import Auth from './views/Auth/Auth';
+import AddEditProfile from './components/AddEditProfile/AddEditProfile';
 
 export default function App() {
   return (
@@ -14,15 +15,21 @@ export default function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/profile">
-              {/* make this a private route eventually */}
-              <Profile />
-            </Route>
             <Route exact path="/login">
               <Auth />
             </Route>
             <Route exact path="/register">
               <Auth isSigningUp />
+            </Route>
+            <Route exact path="/profile">
+              {/* make this a private route eventually */}
+              <Profile />
+            </Route>
+            <Route exact path="/profile/:id/edit">
+              <AddEditProfile isEditing />
+            </Route>
+            <Route exact path="/profile/:id/add">
+              <AddEditProfile />
             </Route>
           </Switch>
         </Layout>

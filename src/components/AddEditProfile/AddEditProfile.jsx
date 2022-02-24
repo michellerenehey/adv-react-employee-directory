@@ -18,3 +18,9 @@
 // isCreatingProfile?
 
 // need profile context?
+
+import './AddEditProfile.css';
+
+export default function AddEditProfile() {
+  return <div>AddEditProfile</div>;
+}
