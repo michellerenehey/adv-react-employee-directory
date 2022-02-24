@@ -13,4 +13,8 @@
 // edit button
 // edit button populates 'create profile'
 
-// MAKE THESE COMPONENTS ONE INSTEAD OF TWO?
+// MAKE THIS ALSO THE EDIT COMPONENT!
+// make private route to edit
+// isCreatingProfile?
+
+// need profile context?
