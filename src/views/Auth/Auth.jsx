@@ -15,11 +15,11 @@ export default function Auth({ isSigningUp = false }) {
     e.preventDefault();
     if (isSigningUp) {
       await signUpUser(email, password);
-      history.push('/');
-      console.log('clicking', email);
+      history.push('/confirm');
     } else {
       const response = await signInUser(email, password);
-      console.log(response);
+      setUser(response.id, response.email);
+      history.replace('/profile');
     }
   };
   return (

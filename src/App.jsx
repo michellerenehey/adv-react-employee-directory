@@ -5,6 +5,7 @@ import Home from './views/Home/Home';
 import Profile from './views/Profile/Profile';
 import Auth from './views/Auth/Auth';
 import AddEditProfile from './components/AddEditProfile/AddEditProfile';
+import Confirm from './views/Auth/Confirm';
 
 export default function App() {
   return (
@@ -20,6 +21,9 @@ export default function App() {
             </Route>
             <Route exact path="/register">
               <Auth isSigningUp />
+            </Route>
+            <Route exact path="/confirm">
+              <Confirm />
             </Route>
             <Route exact path="/profile">
               {/* make this a private route eventually */}
