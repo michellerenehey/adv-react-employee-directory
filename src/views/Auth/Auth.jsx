@@ -18,7 +18,7 @@ export default function Auth({ isSigningUp = false }) {
       history.push('/confirm');
     } else {
       const response = await signInUser(email, password);
-      setUser(response.id, response.email);
+      setUser({ id: response.id, email: response.email });
       history.replace(`/profile/${response.id}`);
     }
   };
