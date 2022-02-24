@@ -6,6 +6,7 @@ import Profile from './views/Profile/Profile';
 import Auth from './views/Auth/Auth';
 import AddEditProfile from './components/AddEditProfile/AddEditProfile';
 import Confirm from './views/Auth/Confirm';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 export default function App() {
   return (
@@ -25,16 +26,15 @@ export default function App() {
             <Route exact path="/confirm">
               <Confirm />
             </Route>
-            <Route exact path="/profile">
-              {/* make this a private route eventually */}
+            <PrivateRoute exact path="/profile">
               <Profile />
-            </Route>
-            <Route exact path="/profile/edit">
-              <AddEditProfile isEditing />
-            </Route>
-            <Route exact path="/profile/create">
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile/edit">
               <AddEditProfile />
-            </Route>
+            </PrivateRoute>
+            <PrivateRoute exact path="/profile/create">
+              <AddEditProfile isCreating />
+            </PrivateRoute>
           </Switch>
         </Layout>
       </BrowserRouter>

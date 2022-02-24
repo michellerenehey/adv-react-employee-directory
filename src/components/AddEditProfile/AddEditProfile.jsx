@@ -5,10 +5,7 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useProfile } from '../../context/ProfileContext';
 
-export default function AddEditProfile({
-  isEditing = false,
-  isCreating = false,
-}) {
+export default function AddEditProfile({ isCreating = false }) {
   const [name, setName] = useState('');
   const [birthday, setBirthday] = useState('');
   const [bio, setBio] = useState('');
