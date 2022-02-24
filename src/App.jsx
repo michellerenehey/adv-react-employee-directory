@@ -25,14 +25,14 @@ export default function App() {
             <Route exact path="/confirm">
               <Confirm />
             </Route>
-            <Route exact path="/profile">
+            <Route exact path="/profile/:id">
               {/* make this a private route eventually */}
               <Profile />
             </Route>
             <Route exact path="/profile/:id/edit">
               <AddEditProfile isEditing />
             </Route>
-            <Route exact path="/profile/:id/add">
+            <Route exact path="/profile/add">
               <AddEditProfile />
             </Route>
           </Switch>
