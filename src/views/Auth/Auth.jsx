@@ -12,6 +12,8 @@ export default function Auth({ isSigningUp = false }) {
   const [password, setPassword] = useState('');
   const { profile } = useProfile();
   const history = useHistory();
+  // console.log('profile', profile);
+  // console.log('profile.name', profile.name);
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -21,11 +23,7 @@ export default function Auth({ isSigningUp = false }) {
     } else {
       const response = await signInUser(email, password);
       setUser({ id: response.id, email: response.email });
-      if (profile.name !== '') {
-        history.replace('/profile/create');
-      } else {
-        history.replace('/profile');
-      }
+      history.replace('/profile');
     }
   };
   return (

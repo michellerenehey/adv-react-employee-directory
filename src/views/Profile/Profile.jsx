@@ -2,16 +2,24 @@ import './Profile.css';
 import { useProfile } from '../../context/ProfileContext';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { getProfile } from '../../services/profiles';
+import { Redirect } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export default function Profile() {
-  const { profile, setProfile } = useProfile();
-  // const [compProfile, setCompProfile] = useState({});
+  const { profile, setProfile, loading, setLoading } = useProfile();
+  const history = useHistory();
 
-  // useEffect(async () => {
-  //   await setProfile(profile);
-  // }, []);
+  useEffect(async () => {
+    try {
+      const res = await getProfile();
+      setProfile(res);
+      setLoading(false);
+    } catch (err) {
+      history.push('/profile/create');
+    }
+  });
 
-  console.log(profile);
   return (
     <div className="Profile">
       <h1>{profile.name}</h1>
