@@ -26,7 +26,7 @@ export default function Header() {
       ) : (
         <>
           <span>Not signed in.</span>
-          <Link to="/login">
+          <Link to="/login" aria-label="sign-in header">
             <button>Sign In</button>
           </Link>
         </>

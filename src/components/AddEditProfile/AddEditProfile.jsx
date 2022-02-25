@@ -3,7 +3,7 @@ import { useUser } from '../../context/UserContext';
 import { createProfile, updateProfile } from '../../services/profiles';
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useProfile } from '../../context/ProfileContext';
+import { useProfile } from '../../hooks/useProfile';
 
 export default function AddEditProfile({ isCreating = false }) {
   const [name, setName] = useState('');
