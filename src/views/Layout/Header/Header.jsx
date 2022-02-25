@@ -9,6 +9,7 @@ export default function Header() {
 
   return (
     <div className="Header">
+      <h3>Welcome to Acme Inc Directory</h3>
       {user.email ? (
         <>
           <span>signed in as {user.email}</span>

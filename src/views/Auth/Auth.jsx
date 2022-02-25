@@ -4,11 +4,13 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
 import { signInUser, signUpUser } from '../../services/users';
+import { useProfile } from '../../context/ProfileContext';
 
 export default function Auth({ isSigningUp = false }) {
   const { setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const { profile } = useProfile();
   const history = useHistory();
 
   const handleAuth = async (e) => {
@@ -19,7 +21,11 @@ export default function Auth({ isSigningUp = false }) {
     } else {
       const response = await signInUser(email, password);
       setUser({ id: response.id, email: response.email });
-      history.replace('/profile');
+      if (profile.name === '') {
+        history.replace('/profile/create');
+      } else {
+        history.replace('/profile');
+      }
     }
   };
   return (
