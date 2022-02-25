@@ -6,7 +6,7 @@ import { getProfile } from '../../services/profiles';
 import { useHistory } from 'react-router-dom';
 
 export default function Profile() {
-  const { profile, setProfile, setLoading } = useProfile();
+  const { profile, setProfile, loading, setLoading } = useProfile();
   const history = useHistory();
 
   useEffect(async () => {
@@ -18,6 +18,8 @@ export default function Profile() {
       history.push('/profile/create');
     }
   });
+
+  if (loading) return <p>...Loading</p>;
 
   return (
     <div className="Profile">

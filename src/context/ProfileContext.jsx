@@ -16,6 +16,7 @@ const ProfileProvider = ({ children }) => {
 
   useEffect(() => {
     const fetchProfile = async () => {
+      setLoading(true);
       try {
         const response = await getProfile();
         setProfile(response);
@@ -29,7 +30,7 @@ const ProfileProvider = ({ children }) => {
     fetchProfile();
   }, [user]);
 
-  const value = { profile, setProfile, setLoading };
+  const value = { profile, setProfile, loading, setLoading };
 
   return (
     <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
