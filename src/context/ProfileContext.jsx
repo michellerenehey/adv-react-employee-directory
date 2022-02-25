@@ -1,9 +1,11 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { getProfile } from '../services/profiles';
+import { useUser } from '../context/UserContext';
 
 export const ProfileContext = createContext();
 
 const ProfileProvider = ({ children }) => {
+  const { user } = useUser();
   const [profile, setProfile] = useState({
     name: '',
     email: '',
@@ -21,7 +23,7 @@ const ProfileProvider = ({ children }) => {
       }
     };
     fetchProfile();
-  }, []);
+  }, [user]);
 
   const value = { profile, setProfile };
 

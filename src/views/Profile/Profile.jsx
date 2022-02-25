@@ -7,9 +7,9 @@ export default function Profile() {
   const { profile, setProfile } = useProfile();
   // const [compProfile, setCompProfile] = useState({});
 
-  useEffect(async () => {
-    await setProfile(profile);
-  }, []);
+  // useEffect(async () => {
+  //   await setProfile(profile);
+  // }, []);
 
   console.log(profile);
   return (
