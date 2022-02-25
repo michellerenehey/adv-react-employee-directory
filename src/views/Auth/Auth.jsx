@@ -21,7 +21,7 @@ export default function Auth({ isSigningUp = false }) {
     } else {
       const response = await signInUser(email, password);
       setUser({ id: response.id, email: response.email });
-      if (profile.name === '') {
+      if (profile.name !== '') {
         history.replace('/profile/create');
       } else {
         history.replace('/profile');

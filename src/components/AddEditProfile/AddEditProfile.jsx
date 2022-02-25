@@ -24,6 +24,7 @@ export default function AddEditProfile({ isCreating = false }) {
 
     if (isCreating) {
       await createProfile({ name, email: user.email, bio, birthday });
+      setProfile({ name, email: user.email, bio, birthday });
       history.push('/profile');
     } else {
       await updateProfile({ name, email: user.email, bio, birthday });
