@@ -35,6 +35,11 @@ export default function AddEditProfile({ isCreating = false }) {
 
   return (
     <div>
+      <h2>
+        {isCreating
+          ? 'Welcome! Create a profile!'
+          : 'Edit Your Employee Profile'}
+      </h2>
       <form onSubmit={handleProfile}>
         <label>Enter name:</label>
         <input
