@@ -4,6 +4,7 @@ import App from './App';
 import { UserProvider } from './context/UserContext';
 import { MemoryRouter } from 'react-router-dom';
 
+// testing layout and home and auth and profile
 test('user can sign in with existing account', async () => {
   render(
     <MemoryRouter>
@@ -61,6 +62,7 @@ test('user can sign in with existing account', async () => {
   userEvent.click(signOutButton);
 });
 
+// testing layout and home and auth and confirm
 test('user can create a new profile without existing account', async () => {
   render(
     <MemoryRouter>
