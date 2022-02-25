@@ -4,7 +4,7 @@ import App from './App';
 import { UserProvider } from './context/UserContext';
 import { MemoryRouter } from 'react-router-dom';
 
-test('testing sign in ability with existing account', async () => {
+test('user can sign in with existing account', async () => {
   render(
     <MemoryRouter>
       <UserProvider>
@@ -54,4 +54,43 @@ test('testing sign in ability with existing account', async () => {
     /signed in as michelle\.r\.nygren@gmail\.com/i
   );
   expect(signedInAs).toBeInTheDocument();
+
+  const signOutButton = screen.getByRole('button', { name: /sign out/i });
+  expect(signOutButton).toBeInTheDocument();
+
+  userEvent.click(signOutButton);
+});
+
+test('user can create a new profile without existing account', async () => {
+  render(
+    <MemoryRouter>
+      <UserProvider>
+        <App />
+      </UserProvider>
+    </MemoryRouter>
+  );
+
+  const createAccount = screen.getByRole('link', { name: /create account/i });
+  expect(createAccount).toBeInTheDocument();
+
+  userEvent.click(createAccount);
+
+  const createAccountWelcome = screen.getByRole('heading', {
+    name: /welcome! create an account below\./i,
+  });
+  expect(createAccountWelcome).toBeInTheDocument();
+
+  const emailField = screen.getByPlaceholderText(/email/i);
+  userEvent.type(emailField, 'michelle.r.nygren+1@gmail.com');
+
+  const passwordField = screen.getByPlaceholderText(/password/i);
+  userEvent.type(passwordField, '123456789');
+
+  const submitButton = screen.getByLabelText(/sign-up new user/i);
+  userEvent.click(submitButton);
+
+  const successText = await screen.findByText(
+    /success! please confirm your email and login\./i
+  );
+  expect(successText).toBeInTheDocument();
 });

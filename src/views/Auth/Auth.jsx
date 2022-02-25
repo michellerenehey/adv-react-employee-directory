@@ -43,7 +43,7 @@ export default function Auth({ isSigningUp = false }) {
           onChange={(e) => setPassword(e.target.value)}
         />
         {isSigningUp ? (
-          <button>Sign Up</button>
+          <button aria-label="sign-up new user">Sign Up</button>
         ) : (
           <button aria-label="sign-in welcome back">Sign In</button>
         )}
