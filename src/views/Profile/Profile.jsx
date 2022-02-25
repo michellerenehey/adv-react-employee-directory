@@ -1,13 +1,12 @@
 import './Profile.css';
 import { useProfile } from '../../context/ProfileContext';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getProfile } from '../../services/profiles';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 export default function Profile() {
-  const { profile, setProfile, loading, setLoading } = useProfile();
+  const { profile, setProfile, setLoading } = useProfile();
   const history = useHistory();
 
   useEffect(async () => {

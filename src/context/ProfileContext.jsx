@@ -29,7 +29,7 @@ const ProfileProvider = ({ children }) => {
     fetchProfile();
   }, [user]);
 
-  const value = { profile, setProfile, loading, setLoading };
+  const value = { profile, setProfile, setLoading };
 
   return (
     <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>
