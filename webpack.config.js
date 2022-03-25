@@ -22,7 +22,7 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    port: 7891,
+    port: 3000,
     historyApiFallback: true,
   },
   plugins: [
@@ -61,7 +61,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               sourceMap: true,
-              modules: true,
+              modules: false,
               importLoaders: 1,
             },
           },
